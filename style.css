@@ -1,0 +1,9 @@
+body {
+  text-align: center;
+  color: darkslategrey;
+  background-color: bisque;
+}
+.flx-S-around {
+  display: flex;
+  justify-content: space-around;
+}

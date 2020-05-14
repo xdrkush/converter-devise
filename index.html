@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Convertisseur de Devise</h1>
+
+  <!-- Tableaux des prix -->
+  <div class="cont">
+    <h1> 1 ₿ </h1>
+    <div id="prices" class="flx-S-around"></div>
+  </div>
+
+  <!-- Convertisseur -->
+  <div class="cont">
+
+    <h1> 
+      <input 
+        id="btc" 
+        type="number"
+        placeholder="Bitcoin"
+      />
+      ₿
+    </h1>
+
+    <h1>=</h1>
+
+    <div class="cont flx-S-around">
+      <!-- Convertion -->
+      <h1>
+        <input
+          id="usd"
+          type="number"
+          placeholder="USDollar"
+        />
+        $
+      </h1>
+      <h1>
+        <input
+          id="eur"
+          type="number"
+          placeholder="Euro"
+        />
+        €
+      </h1>
+      <h1>
+        <input
+          id="gbp"
+          type="number"
+          placeholder="Livre Sterling"
+        />
+        £
+      </h1>
+    </div>
+
+  </div>
+
+  <!-- On import notre fichier index.js -->
+  <script src="index.js"></script>
+</body>
+
+</html>
