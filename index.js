@@ -1,29 +1,38 @@
-// L'url ou nous allons chercher le json
-const requestURL = 'https://api.coindesk.com/v1/bpi/currentprice.json'
-  // Pour créé une requete nous avons besoin d'instancier notre objet 'XMLHttpRequest'
-const request = new XMLHttpRequest();
-// On ouvre la requete
-request.open('GET', requestURL);
-// On donne le type ou format de la requete
-request.responseType = 'json';
+// ============================================================ //
 
-// On demande à request de ce lancer au chargement de la page et de faire ça ...
-request.onload = () => {
-  // On défini notre variable qui va acceuillir nos nouvelle data
-  var currency = request.response;
-  // On execute getPrice et nous lui donnons les data nécessaire
-  getPrice(currency)
-  getConverter(currency)
-  // le log de l'objet reçu
-  console.log(currency)
-}
+const url = 'https://api.coindesk.com/v1/bpi/currentprice.json'
 
-// On lance notre requete
-request.send();
+// ============================================================ //
 
-// Récupération des ID pour y metre le résultat
+// // Récupération des ID pour y metre le résultat
 const priceDiv = document.getElementById('prices'),
   resultDiv = document.getElementById('result');
+
+// ============================================================ //
+
+// Get data API
+function getCurrency() {
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      const currency = data
+      console.log(data)
+      getPrice(currency)
+      getConverter(currency)
+    });
+}
+
+// Run Gget Data
+getCurrency()
+
+// Le auto-refresh est toute les 10s
+// L'api gratuite fournit un nouveau résultat environ toutes les 30s ou +
+setInterval(function() {
+  // Run Get Data
+  getCurrency()
+}, 10000);
+
+// ============================================================ //
 
 // On créé un fonction getPrice qui prend currency
 function getPrice(currency) {
@@ -41,6 +50,8 @@ function getPrice(currency) {
   priceDiv.innerHTML = price
 
 }
+
+// ============================================================ //
 
 // Récupération de nos valeurs pour les calculer
 
@@ -70,8 +81,8 @@ function getConverter(currency) {
   // On déclare getResult qui prend 2 callback de l'écoute de notre variable
   function getResult(id, valeur, currency) {
     // On défini le ratio entre les devises
-    const ratioUsdEur = currency.bpi.USD.rate_float / currency.bpi.EUR.rate_float
-        , ratioUsdGbp = currency.bpi.USD.rate_float / currency.bpi.GBP.rate_float
+    const ratioUsdEur = currency.bpi.USD.rate_float / currency.bpi.EUR.rate_float,
+      ratioUsdGbp = currency.bpi.USD.rate_float / currency.bpi.GBP.rate_float
 
     if (id == "btc") {
       usd.value = valeur * currency.bpi.USD.rate_float;
@@ -98,3 +109,5 @@ function getConverter(currency) {
   }
 
 }
+
+// =========================================================== //=
