@@ -19,7 +19,8 @@ function getCurrency() {
       console.log(data)
       getPrice(currency)
       getConverter(currency)
-    });
+    }),
+    .catch(err => console.log(err);
 }
 
 // Run Gget Data
