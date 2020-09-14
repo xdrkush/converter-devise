@@ -5,8 +5,7 @@ const url = 'https://api.coindesk.com/v1/bpi/currentprice.json'
 // ============================================================ //
 
 // // Récupération des ID pour y metre le résultat
-const priceDiv = document.getElementById('prices'),
-  resultDiv = document.getElementById('result');
+const priceDiv = document.getElementById('prices')
 
 // ============================================================ //
 
@@ -19,8 +18,8 @@ function getCurrency() {
       console.log(data)
       getPrice(currency)
       getConverter(currency)
-    }),
-    .catch(err => console.log(err);
+    })
+    .catch(err => console.log(err))
 }
 
 // Run Gget Data
