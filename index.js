@@ -22,8 +22,7 @@ request.onload = () => {
 request.send();
 
 // Récupération des ID pour y metre le résultat
-const priceDiv = document.getElementById('prices'),
-  resultDiv = document.getElementById('result');
+const priceDiv = document.getElementById('prices')
 
 // On créé un fonction getPrice qui prend currency
 function getPrice(currency) {
